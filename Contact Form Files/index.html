@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Ajax-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+		
+		$(document).ready(function(){
+		$("#button").click(function(){
+ 	
+	  var nume=$("#nume").val();
+
+      $.ajax({
+                    url:'insert.php',
+                    method:'POST',
+                    data:{
+                        nume:nume,
+                       
+                    },
+                   success:function(data){
+                       alert(data);
+                   }
+                 
+                  });
+			});
+       });
+	</script>
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+
+	<title>Proiect PWEB</title>
+	<link rel="stylesheet" href="css.css">
+	<script defer src="./script.js"></script>
+</head>
+
+
+<body>
+	<div class="container">
+		<form action="index.html" onsubmit="handleFormValidation(event)">
+			<div class="form-group">
+				<h1 allign="center">Inregistrarea datelor</h1>
+
+				<!-- nume si prenume -->
+				<label for="nume">Nume:</label>
+				<input class="form-control" type="text" id="nume" name="nume" required>
+
+				<label for="prenume">Prenume:</label>
+				<input class="form-control" type="text" id="prenume" name="prenume" required>
+
+				<label for="username">Username:</label>
+				<input class="form-control" type="text" id="username" name="username" required>
+
+				<!-- username min 5 caractere, parola min 8 caractere -->
+				<label for="password">Parola:</label><br>
+				<input class="form-control" type="password" id="password" name="password" autocomplete="on">
+
+				<!-- email validare adresa email -->
+				<label for="email">Introduceti adresa de email:</label>
+				<input class="form-control" type="email" id="email" name="email">
+
+				<!-- Gen -->
+				<label for="gen">Gen:</label>
+				<select class="form-control" id="gen" name="gen">
+					<option value="m">Masculin</option>
+					<option value="f">Feminin</option>
+					<option value="n">Neutru</option>
+				</select>
+
+				<!-- Data nasterii -->
+				<label for="datan">Data nasterii:</label>
+				<input class="form-control" type="date" id="datan" name="datan" required>
+
+				<!-- Accord date personale -->
+				<div class="form-group form-check">
+					<input type="checkbox" class="form-check-input" id="datePers" required>
+					<label class="form-check-label" for="datePers">Esti de acord cu procesarea datelor personale in conformitate cu RGPD.</label>
+				</div>
+
+				<!-- Trimite formular-->
+				<!-- <input class="btn btn-block btn-outline-primary" value="Submit" type="submit">
+				-->
+				<button class="btn btn-block btn-outline-primary" value="Submit" type="submit">Trimite</button>
+
+				<!-- 
+				TEST AJAX
+				<button> Apasa aici frate.</button>
+				<p id="test"></p>
+				-->
+
+				<div id="alert" class="alert alert-danger" role="alert"></div>
+			</div>
+		</form>
+</body>
+
+</html>
